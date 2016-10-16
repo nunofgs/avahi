@@ -1,0 +1,15 @@
+{{ range $name, $containers := groupByMulti $ "Env.SERVICE_NAME" "," }}
+{{ range $index, $value := $containers }}
+
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+<service-group>
+    <name replace-wildcards="yes">{{ $name }}</name>
+    <service>
+        <type>{{ $value.Env.SERVICE_TYPE }}</type>
+        <port>{{ $value.Env.SERVICE_PORT }}</port>
+    </service>
+</service-group>
+
+{{ end }}
+{{ end }}

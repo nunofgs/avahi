@@ -1,0 +1,2 @@
+avahi: avahi-daemon --no-drop-root
+dockergen: docker-gen -watch -only-exposed -notify "/opt/app/update.sh" /opt/app/service.tmpl /etc/avahi/services/generated.service
